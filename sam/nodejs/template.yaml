@@ -1,6 +1,8 @@
 # This is the SAM template that represents the architecture of your serverless application
 # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-template-basics.html
 
+# https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md
+
 # The AWSTemplateFormatVersion identifies the capabilities of the template
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/format-version-structure.html
 AWSTemplateFormatVersion: 2010-09-09
@@ -19,15 +21,20 @@ Parameters:
   Stage:
     Type: String
 
+Conditions:
+  CreateProdResources: !Equals [!Ref Stage, Prod]
+
 Globals:
   Function:
-    #Timeout: 5
+    Timeout: 5
     Tracing: Active
-    #MemorySize: 1024
+    MemorySize: 1024
+    # Read more about Deployment Preferences and Safe Deployments here!!
+    # https://github.com/awslabs/serverless-application-model/blob/master/docs/safe_lambda_deployments.rst
     AutoPublishAlias: live
     DeploymentPreference:
       Enabled: true
-      Type: Canary10Percent5Minutes
+      Type: !If [CreateProdResources, Canary10Percent5Minutes, AllAtOnce]
   Api:
     TracingEnabled: true
     Cors:

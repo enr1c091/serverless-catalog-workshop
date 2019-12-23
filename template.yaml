@@ -64,7 +64,7 @@ Resources:
             -
               Key: "Project"
               Value: !Ref ProjectName
-        DeletionPolicy: Retain
+        #DeletionPolicy: Retain #Can be turned on to avoid losing the repo when deleting the stack
 
 ########  ##     ## #### ##       ########  
 ##     ## ##     ##  ##  ##       ##     ## 
