@@ -37,6 +37,9 @@ describe('Test putItemHandler', function () { // eslint-disable-line
     const result = await lambda.putItemHandler(event)
     const expectedResult = {
       statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify(returnedItem)
     }
 

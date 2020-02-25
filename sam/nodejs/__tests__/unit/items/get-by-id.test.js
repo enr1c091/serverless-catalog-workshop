@@ -40,6 +40,9 @@ describe('Test getByIdHandler', () => { // eslint-disable-line
 
     const expectedResult = {
       statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify(item)
     }
 
