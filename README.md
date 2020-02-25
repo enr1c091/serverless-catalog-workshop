@@ -1,6 +1,7 @@
 # serverless-catalog-workshop
 
 ## Proposed Structure
+
 - Introduction
 - Start the Workshop
 - Serverless Backend Project
@@ -10,6 +11,7 @@
 - Conclusion
 
 ## More Section
+
 - Authors
 - More Resources
 - GitHub Project
