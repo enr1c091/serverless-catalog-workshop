@@ -3,3 +3,4 @@ node_modules
 __pycache__
 sample.zip
 packaged.yaml
+package-lock.json
