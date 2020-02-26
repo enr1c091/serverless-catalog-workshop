@@ -35,6 +35,10 @@ Globals:
     DeploymentPreference:
       Enabled: true
       Type: !If [CreateProdResources, Canary10Percent5Minutes, AllAtOnce]
+    Environment:
+      Variables:
+        # Enable usage of KeepAlive to reduce overhead of short-lived actions, like DynamoDB queries
+        AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
   Api:
     TracingEnabled: true
     Cors:
